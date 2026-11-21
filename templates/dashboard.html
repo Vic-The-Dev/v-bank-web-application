@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+
+{% block title %}
+V-Bank | Dashboard
+{% endblock %}
+
+{% block content %}
+
+<div class="dashboard">
+
+    <header>
+        <h1>Welcome, {{ first_name }}!</h1>
+        <p>Welcome back. Here's your financial overview.</p>
+    </header>
+
+    <section class="account-summary">
+
+        <h2>Account Overview</h2>
+
+        <div class="balance-card">
+            <p>Available Balance</p>
+            <h2>₦{{ "{:,.2f}".format(balance) }}</h2>
+        </div>
+
+        <div class="account-number-card">
+            <p>Account Number</p>
+
+            <div class="account-number-display">
+                <h3 id="account-number">{{ account_number }}</h3>
+
+                <button type="button" onclick="copyAccountNumber()">
+                    Copy
+                </button>
+            </div>
+
+            <span id="copy-message"></span>
+        </div>
+
+    </section>
+
+    <section class="dashboard-options">
+
+        <h2>Quick Actions</h2>
+
+        <div class="quick-actions">
+
+            <a href="{{ url_for('deposit') }}" class="action-card">
+                <h3>Deposit</h3>
+                <p>Add money to your account.</p>
+            </a>
+
+            <a href="{{ url_for('transfer') }}" class="action-card">
+                <h3>Transfer Money</h3>
+                <p>Send money to another V-Bank account.</p>
+            </a>
+
+            <a href="{{ url_for('withdrawal') }}" class="action-card">
+                <h3>Withdraw</h3>
+                <p>Withdraw money from your account.</p>
+            </a>
+
+            <a href="{{ url_for('transactions') }}" class="action-card">
+                <h3>Transactions</h3>
+                <p>View your transaction history.</p>
+            </a>
+
+        </div>
+
+    </section>
+
+</div>
+
+{% endblock %}

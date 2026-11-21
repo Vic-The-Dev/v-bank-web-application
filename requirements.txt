@@ -1,0 +1,5 @@
+Flask
+psycopg[binary]
+bcrypt
+python-dotenv
+gunicorn

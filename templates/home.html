@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% block title %}
+V-Bank | Welcome
+{% endblock %}
+
+{% block content %}
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <span class="hero-tag">WELCOME TO V-BANK</span>
+
+        <h1>Banking made simple.<br>
+            Your money, your control.</h1>
+
+        <p>
+            Experience a smarter way to manage your finances.
+            Transfer money, monitor your balance and keep track
+            of your transactions with ease.
+        </p>
+
+        <div class="hero-buttons">
+
+            <a href="{{ url_for('register') }}" class="hero-primary">
+                Open an Account
+            </a>
+
+            <a href="{{ url_for('login') }}" class="hero-secondary">
+                Login to Your Account
+            </a>
+
+        </div>
+
+    </div>
+
+    <div class="hero-card">
+
+        <p>V-Bank Account</p>
+
+        <h2>Banking Without Limits.</h2>
+
+        <div class="hero-card-bottom">
+            <span>Secure</span>
+            <span>Simple</span>
+            <span>Reliable</span>
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}

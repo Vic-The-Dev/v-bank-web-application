@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+
+{% block title %}Transaction History | V-Bank{% endblock %}
+
+{% block content %}
+
+<div class="transactions-container">
+
+    <div class="transactions-header">
+        <h1>Transaction History</h1>
+        <p>View all your account activities.</p>
+    </div>
+
+    {% if transactions %}
+
+        <div class="transaction-list">
+
+            {% for transaction in transactions %}
+
+                <div class="transaction-card">
+
+                    <div class="transaction-info">
+                        <h3>{{ transaction.display_type }}</h3>
+
+                        <p>
+                            {{ transaction.created_at.strftime("%d %b %Y, %I:%M %p") }}
+                        </p>
+
+                        {% if transaction.related_account %}
+                            <small>
+                                Account: {{ transaction.related_account }}
+                            </small>
+                        {% endif %}
+                    </div>
+
+                    <div class="transaction-amount
+                        {% if transaction.display_type in ['DEPOSIT', 'TRANSFER IN', 'ACCOUNT BONUS'] %}
+                            credit
+                        {% else %}
+                            debit
+                        {% endif %}
+                    ">
+
+                        {% if transaction.display_type in ['DEPOSIT', 'TRANSFER IN', 'ACCOUNT BONUS'] %}
+                            +
+                        {% else %}
+                            -
+                        {% endif %}
+
+                        ₦{{ "{:,.2f}".format(transaction.amount) }}
+
+                    </div>
+
+                </div>
+
+            {% endfor %}
+
+        </div>
+
+    {% else %}
+
+        <div class="empty-transactions">
+            <h3>No transactions yet</h3>
+            <p>Your account activities will appear here.</p>
+        </div>
+
+    {% endif %}
+
+</div>
+
+{% endblock %}
