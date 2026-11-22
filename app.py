@@ -298,7 +298,10 @@ def deposit():
         if amount < Decimal("1000"):
             flash("The minimum deposit is ₦1,000.", "error")
             return redirect(url_for("deposit"))
-
+        if amount > Decimal("5000"):
+            flash("The maximum deposition is 5,000","error")
+            return redirect(url_for("deposit"))
+            
         if not re.fullmatch(r"\d{4}", pin):
             flash("Enter your valid 4-digit PIN.", "error")
             return redirect(url_for("deposit"))
